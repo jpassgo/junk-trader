@@ -2,7 +2,7 @@ interface Posting {
     id: number,
     title: string,
     price: number,
-    description: number
+    description: string
 }
 
 type PostingState = {
