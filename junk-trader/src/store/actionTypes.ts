@@ -1,0 +1,2 @@
+export const ADD_POSTING = "ADD_POSTING"
+export const REMOVE_POSTING = "REMOVE_POSTING"
