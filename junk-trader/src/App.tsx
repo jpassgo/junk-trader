@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react"
+import { useSelector, shallowEqual, useDispatch } from "react-redux"
+import "./App.css"
 
-function App() {
+import { Posting } from "./components/Posting"
+import { AddPosting } from "./components/AddPosting"
+import { addPosting, removePosting } from "./store/actionCreators"
+import { Dispatch } from "redux"
+
+const App: React.FC = () => {
+  const postings: readonly Posting[] = useSelector(
+    (state: PostingState) => state.postings,
+    shallowEqual
+  )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+        <h1>My Articles</h1>
+        <AddPosting savePosting={savePosting} />
+        {postings.map((posting: Posting) => (
+            <Posting
+                key={posting.id}
+                posting={posting}
+                removePosting={removePosting}
+            />
+        ))}
+    </main>
+)
 }
 
 export default App;
