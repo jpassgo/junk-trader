@@ -9,7 +9,7 @@ const styles: Styles<Theme, StyledComponentProps> = (theme) => ({
     
 })
 
-class Posting extends Component<any>{
+export class Posting extends Component<any>{
     render(): JSX.Element {
         return (
             <Card>
