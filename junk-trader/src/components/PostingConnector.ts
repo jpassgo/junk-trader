@@ -9,5 +9,6 @@ const mapStateToProps = (): PostingProps => {
 
 const mapDispatchToProps = (): PostingProps => {
     return (({} as unknown) as PostingProps);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posting);
