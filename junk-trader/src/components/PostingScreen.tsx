@@ -5,11 +5,9 @@ import { render } from '@testing-library/react';
 import Grid from '@material-ui/core/Grid';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 
-const styles: Styles<Theme, StyledComponentProps> = (theme) => ({
-    
-})
+const styles: Styles<Theme, StyledComponentProps> = (theme) => ({})
 
-export class Posting extends Component<any>{
+export class PostingScreen extends Component<any>{
     render(): JSX.Element {
         return (
             <Card>
@@ -27,6 +25,6 @@ export class Posting extends Component<any>{
     }
 }
 
-export type PostingProps = WithStyles<typeof styles>
+export type PostingScreenProps = WithStyles<typeof styles>
 
-export default withStyles(styles, {withTheme: true})(Posting)
+export default withStyles(styles, {withTheme: true})(PostingScreen)
