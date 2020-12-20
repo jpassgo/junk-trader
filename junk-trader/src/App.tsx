@@ -1,11 +1,12 @@
-import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
-import "./App.css"
-
-import { Posting } from "./components/Posting"
-import { AddPostingScreen } from "./components/AddPostingScreen"
 import { addPosting, removePosting } from "./store/actionCreators"
+import { AddPostingScreen } from "./components/AddPostingScreen"
+import { PostingScreen } from "./components/PostingScreen"
+// import createStore from './createReduxStore'
+import { Provider } from 'react-redux'
 import { Dispatch } from "redux"
+import * as React from "react"
+import "./App.css"
 
 const App: React.FC = () => {
   const postings: readonly Posting[] = useSelector(
@@ -14,17 +15,19 @@ const App: React.FC = () => {
   )
 
   return (
-    <main>
-        <h1>My Articles</h1>
-        <AddPostingScreen savePosting={savePosting} />
-        {postings.map((posting: Posting) => (
-            <Posting
-                key={posting.id}
-                posting={posting}
-                removePosting={removePosting}
-            />
-        ))}
-    </main>
+    <Provider >
+      <main>
+          <h1>My Articles</h1>
+          <AddPostingScreen/>
+          {postings.map((posting: Posting) => (
+              <PostingScreen
+                  key={posting.id}
+                  posting={posting}
+                  removePosting={removePosting}
+              />
+          ))}
+      </main>
+    </Provider>
 )
 }
 
