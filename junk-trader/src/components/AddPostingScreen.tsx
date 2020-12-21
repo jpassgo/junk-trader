@@ -23,7 +23,7 @@ export class AddPostingScreen extends Component<any>{
                    <TextField id="outlined-basic" label="Description" variant="outlined" />
                </Grid>
                <Grid item xs={12}>
-                   <Button variant="outlined">Submit</Button>
+                   <Button variant="outlined" onClick={() => { alert('clicked') }}>Submit</Button>
                </Grid>
            </Grid>
         )
