@@ -2,10 +2,10 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { addPosting, removePosting } from "./store/actionCreators"
 import { AddPostingScreen } from "./components/AddPostingScreen"
 import { PostingScreen } from "./components/PostingScreen"
-// import createStore from './createReduxStore'
+import * as redux from 'redux'
 import { Provider } from 'react-redux'
-import { Dispatch } from "redux"
 import * as React from "react"
+import reducer from "./store/reducer"
 import "./App.css"
 
 const App: React.FC = () => {
@@ -14,8 +14,10 @@ const App: React.FC = () => {
     shallowEqual
   )
 
+  const store = redux.createStore(reducer)
+
   return (
-    <Provider >
+    <Provider store={store}>
       <main>
           <h1>My Articles</h1>
           <AddPostingScreen/>
