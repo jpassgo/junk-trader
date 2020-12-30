@@ -1,12 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { createStore, applyMiddleware, Store} from "redux"
+import { Provider } from "react-redux"
+import reducer from "./store/reducer"
+import { render } from 'react-dom'
+import thunk from "redux-thunk"
 import App from './App';
+import './index.css';
 
+const store: Store<PostingState, PostingAction> & {
+  dispatch: DispatchType
+} = createStore(reducer, applyMiddleware(thunk))
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById("root")
+
+render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  rootElement
+)
