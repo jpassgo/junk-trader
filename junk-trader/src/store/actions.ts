@@ -1,0 +1,4 @@
+export default {
+    ADD_POSTING: "ADD_POSTING",
+    REMOVE_POSTING: "REMOVE_POSTING"
+}
