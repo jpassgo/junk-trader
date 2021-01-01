@@ -19,7 +19,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <main>
-          <h1>My Articles</h1>
+          <h1>Marketplace</h1>
           <AddPostingScreen/>
           {postings.map((posting: Posting) => (
               <PostingScreen
