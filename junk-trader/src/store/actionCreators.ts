@@ -1,8 +1,8 @@
-import * as actionTypes from './actionTypes'
+import actions from '../store/actions'
 
 export function addPosting(posting: Posting) {
     const action: PostingAction = {
-        type: actionTypes.ADD_POSTING,
+        type: actions.ADD_POSTING,
         posting,
     }
 
@@ -11,7 +11,7 @@ export function addPosting(posting: Posting) {
 
 export function removePosting(posting: Posting) {
     const action: PostingAction = {
-        type: actionTypes.REMOVE_POSTING,
+        type: actions.REMOVE_POSTING,
         posting,
     }
 

@@ -1,4 +1,4 @@
-import * as actionTypes from "./actionTypes"
+import actions from '../store/actions'
 
 const initialState: PostingState = {
     postings: [
@@ -22,7 +22,7 @@ const reducer = (
     action: PostingAction
 ): PostingState => {
     switch(action.type) {
-        case actionTypes.ADD_POSTING:
+        case actions.ADD_POSTING:
             const newPosting: Posting = {
                 id: Math.random(),
                 title: "Camry",
@@ -33,7 +33,7 @@ const reducer = (
                 ...state,
                 postings: state.postings.concat(newPosting)
             }
-        case actionTypes.REMOVE_POSTING:
+        case actions.REMOVE_POSTING:
             const updatedPostings: Posting[] = state.postings.filter(
                 posting => posting.id !== action.posting.id
             )
