@@ -9,7 +9,13 @@ const styles: Styles<Theme, StyledComponentProps> = (theme) => ({
     
 })
 
+
 export class AddPostingScreen extends Component<any>{
+
+    addPosting(posting: Posting): void {
+        this.props.addPosting(posting)
+    }
+
     render(): JSX.Element {
         return (
            <Grid container spacing={3}>
@@ -23,7 +29,7 @@ export class AddPostingScreen extends Component<any>{
                    <TextField id="outlined-basic" label="Description" variant="outlined" />
                </Grid>
                <Grid item xs={12}>
-                   <Button variant="outlined" onClick={() => { alert('clicked') }}>Submit</Button>
+                   <Button variant="outlined" onClick={() => { this.addPosting.bind(this) }}>Submit</Button>
                </Grid>
            </Grid>
         )
