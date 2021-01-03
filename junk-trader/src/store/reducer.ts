@@ -9,7 +9,7 @@ const initialState: PostingState = {
             description: "Over priced second hand PS5."
         },
         {
-            id: 1,
+            id: 2,
             title: "Xbox Series X",
             price: 500.0,
             description: "Not even upcharging, please take it off my hands."
