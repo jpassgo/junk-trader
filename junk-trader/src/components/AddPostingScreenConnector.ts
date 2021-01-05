@@ -14,8 +14,8 @@ const addPostingToMarketplace = (posting: Posting): AnyAction => {
     }
 }
 
-const mapStateToProps = (): AddPostingScreenProps => {
-    return ({} as unknown) as AddPostingScreenProps;
+const mapStateToProps = (state: { postings: { classes: Record<string, string> } }): AddPostingScreenProps => {
+    return state.postings;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch): AddPostingScreenProps => 
