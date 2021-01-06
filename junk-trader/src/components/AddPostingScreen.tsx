@@ -31,12 +31,7 @@ export class AddPostingScreen extends Component<any>{
                    <TextField id="description" label="Description" variant="outlined" />
                </Grid>
                <Grid item xs={12}>
-                   <Button variant="outlined" onClick={() => { this.addPosting.bind({
-                       id: getRandomInt(1, 1000000),
-                       title: this.props.title,
-                       price: this.props.price,
-                       description: this.props.description
-                   }) }}>Submit</Button>
+                   <Button variant="outlined" onClick={() => { this.addPosting.bind(this) } }>Submit</Button>
                </Grid>
            </Grid>
         )

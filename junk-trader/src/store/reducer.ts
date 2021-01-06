@@ -24,10 +24,10 @@ const reducer = (
     switch(action.type) {
         case actions.ADD_POSTING:
             const newPosting: Posting = {
-                id: Math.random(),
-                title: "Camry",
-                price: 11200.0,
-                description: "Selling my car to buy a PS5"
+                id: getRandomInt(1, 1000000),
+                title: this.props.title,
+                price: this.props.price,
+                description: this.props.description
             }
             return {
                 ...state,
