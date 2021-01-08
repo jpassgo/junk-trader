@@ -1,17 +1,17 @@
-interface Posting {
+interface Post {
     id: number,
     title: string,
     price: number,
     description: string
 }
 
-type PostingState = {
-    postings: Posting[]
+type PostState = {
+    posts: Post[]
 }
 
-type PostingAction = {
+type PostAction = {
     type: string,
-    posting: Posting
+    post: Post
 }
 
-type DispatchType = (args: PostingAction) => PostingAction
+type DispatchType = (args: PostAction) => PostAction
