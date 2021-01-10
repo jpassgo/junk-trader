@@ -1,3 +1,3 @@
 export default {
-    MY_POSTINGS_SCREEN: '/postings'
+    MY_POSTS_SCREEN: '/posts'
 }
