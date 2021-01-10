@@ -1,27 +1,27 @@
 import actions from '../store/actions'
 
-export function addPosting(posting: Posting) {
-    const action: PostingAction = {
-        type: actions.ADD_POSTING,
-        posting,
+export function addPost(post: Post) {
+    const action: PostAction = {
+        type: actions.ADD_POST,
+        post,
     }
 
     return simulateHttpRequest(action)
 }
 
-export function removePosting(posting: Posting) {
-    const action: PostingAction = {
-        type: actions.REMOVE_POSTING,
-        posting,
+export function removePost(post: Post) {
+    const action: PostAction = {
+        type: actions.REMOVE_POST,
+        post,
     }
 
     return simulateHttpRequest(action)
 }
 
-export function simulateHttpRequest(posting: PostingAction) {
+export function simulateHttpRequest(post: PostAction) {
     return (dispatch: DispatchType) => {
         setTimeout(() => {
-            dispatch(posting)
+            dispatch(post)
         }, 500)
     }
 }
