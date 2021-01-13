@@ -19,13 +19,11 @@ const App: React.FC = () => {
   const store = redux.createStore(reducer)
 
   return (
-    <Provider store={store}>
       <main>
           <h1>Marketplace</h1>
           <AddPostScreen/>
           <PostsList/>
       </main>
-    </Provider>
   )
 }
 

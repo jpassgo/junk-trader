@@ -8,6 +8,7 @@ import App from './App';
 import './index.css';
 import AddPostScreen from './components/AddPostScreen';
 import PostsList from './components/PostsList';
+import { PostsScreen } from './components/PostsScreen';
 
 const store: Store<PostState, PostAction> & {
   dispatch: DispatchType
@@ -18,11 +19,7 @@ const rootElement = document.getElementById("root")
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <main>
-          <h1>Marketplace</h1>
-          <AddPostScreen/>
-          <PostsList/>
-      </main>
+      <App/>
     </Provider>
   </React.StrictMode>,
   rootElement
