@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch): AddPostScreenProps =>
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({})
 
 export interface AddPostScreenProps extends WithStyles<typeof styles> {
-    posts: Post[];
+    posts?: Post[];
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPostScreen);
