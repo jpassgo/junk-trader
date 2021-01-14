@@ -9,22 +9,24 @@ import * as React from "react"
 import reducer from "./reducers/reducer"
 import "./App.css"
 import PostsList from "./components/PostsList"
+import { withStyles, Theme } from "@material-ui/core"
+import { Styles, StyledComponentProps } from "@material-ui/core/styles/withStyles"
+import { Component } from "react"
+import thunk from "redux-thunk"
 
-const App: React.FC = () => {
-  const posts: readonly Post[] = useSelector(
-    (state: PostState) => state.posts,
-    shallowEqual
-  )
+const store: redux.Store<PostState, PostAction> & {
+  dispatch: DispatchType
+} = redux.createStore(reducer, redux.applyMiddleware(thunk))
 
-  const store = redux.createStore(reducer)
-
-  return (
-      <main>
-          <h1>Marketplace</h1>
-          <AddPostScreen/>
-          <PostsList/>
-      </main>
-  )
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AddPostScreen/>
+        <PostsList/>
+      </Provider>
+    );
+  }
 }
 
 export default App;
