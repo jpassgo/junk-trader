@@ -2,7 +2,7 @@ import { AccordionActions, WithStyles, Theme } from '@material-ui/core'
 import actions from '../store/actions'
 import { connect } from 'react-redux'
 import { AnyAction, Dispatch } from 'redux'
-import {AddPostScreen } from './AddPostScreen'
+import AddPostScreen, { AddPostScreenProps } from './AddPostScreen'
 import { State } from '../store/store'
 import { Styles, StyledComponentProps } from '@material-ui/core/styles/withStyles'
 
@@ -27,11 +27,5 @@ const mapDispatchToProps = (dispatch: Dispatch): AddPostScreenProps =>
             dispatch(addPostToMarketplace(post));
         },
     } as unknown) as AddPostScreenProps);
-
-const styles: Styles<Theme, StyledComponentProps> = (theme) => ({})
-
-export interface AddPostScreenProps extends WithStyles<typeof styles> {
-    posts?: Post[];
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPostScreen);
