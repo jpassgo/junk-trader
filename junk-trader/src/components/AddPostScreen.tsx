@@ -3,24 +3,16 @@ import { Theme, WithStyles, withStyles } from '@material-ui/core';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 // import { AddPostScreenProps } from './AddPostScreenConnector';
 import { ReactComponent } from '*.svg';
+import { addPost } from '../store/actionCreators';
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
 
 export class AddPostScreen extends React.Component<AddPostScreenProps> {
 
-    addPost(post: Post): void {    
-    }
-
     addPosting(e: any) {
-        e.preventDefault();
-        
+        e.preventDefault();    
     }
-    // handleChange = (event: { target: { name: any; value: any; }; }) => {
-    //     let nam = event.target.name;
-    //     let val = event.target.value;
-    //     this.setState({[nam]: val});
-    // }
 
     render(): JSX.Element {
 
@@ -28,9 +20,15 @@ export class AddPostScreen extends React.Component<AddPostScreenProps> {
             posts
         } = this.props;
 
+        const handleClick = () => {
+            addPost({
+                post = {};
+            });
+          };
+
         return (
             <React.Fragment>
-                <form onSubmit={(e) => {this.addPosting(e)}} className="form-inline">
+                <form onSubmit={ handleClick } className="form-inline">
                     <label>
                         Title:
                         <input type="text" name="title" />

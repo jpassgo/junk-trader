@@ -8,7 +8,6 @@ import { Styles, StyledComponentProps } from '@material-ui/core/styles/withStyle
 
 
 const addPostToMarketplace = (post: Post): AnyAction => {
-    debugger;
     return {
         type: actions.ADD_POST,
         postToAdd: post
@@ -27,5 +26,6 @@ const mapDispatchToProps = (dispatch: Dispatch): AddPostScreenProps =>
             dispatch(addPostToMarketplace(post));
         },
     } as unknown) as AddPostScreenProps);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPostScreen);
