@@ -14,15 +14,11 @@ const store: Store<PostState, PostAction> & {
   dispatch: DispatchType
 } = createStore(reducer, applyMiddleware(thunk))
 
-const rootElement = document.getElementById("root") 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App/>
     </Provider>
   </React.StrictMode>,
-  rootElement
+  document.getElementById("root") 
 );
-
-// ServiceWorker.unregister()
