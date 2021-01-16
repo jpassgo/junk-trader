@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
-import { Theme, WithStyles, withStyles } from '@material-ui/core';
+import React from 'react';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
-// import { AddPostScreenProps } from './AddPostScreenConnector';
-import { ReactComponent } from '*.svg';
-import { addPost } from '../store/actionCreators';
+import { AnyAction } from 'redux';
+import actions from '../store/actions';
+import { State } from '../store/store';
+import { connect } from 'react-redux';
+import { WithStyles, Theme } from '@material-ui/core'
+import { Dispatch } from 'redux'
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
 
 export class AddPostScreen extends React.Component<AddPostScreenProps> {
 
-    addPosting(e: any) {
-        e.preventDefault();    
-    }
-
-    render(): JSX.Element {
+        render(): JSX.Element {
 
         const {
-            posts
+            posts,
+            addPost
         } = this.props;
 
         const handleClick = () => {
-            addPost({
-                post = {};
-            });
+            addPost({id: getRandomInt(1, 1000), title: "", price: 100.00, description: "" });
           };
 
         return (
@@ -56,6 +53,28 @@ function getRandomInt(min: number, max: number) {
 
 export interface AddPostScreenProps extends WithStyles<typeof styles> {
     posts?: Post[];
+    addPost: (post: Post) => void;
 }
 
-export default withStyles(styles, {withTheme: true})(AddPostScreen)
+const addPostToMarketplace = (post: Post): AnyAction => {
+    return {
+        type: actions.ADD_POST,
+        postToAdd: post
+    }
+}
+
+const mapStateToProps = (state: State): AddPostScreenProps => {
+    return ({
+        posts: state.applicationState.posts
+    } as unknown) as AddPostScreenProps;
+}
+
+const mapDispatchToProps = (dispatch: Dispatch): AddPostScreenProps => 
+    (({
+        addPost: (post: Post) => {
+            dispatch(addPostToMarketplace(post));
+        },
+    } as unknown) as AddPostScreenProps);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPostScreen);
