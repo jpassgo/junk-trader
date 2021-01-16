@@ -16,7 +16,7 @@ const addPostToMarketplace = (post: Post): AnyAction => {
 
 const mapStateToProps = (state: State): AddPostScreenProps => {
     return ({
-        postings: state.applicationState.posts
+        posts: state.applicationState.posts
     } as unknown) as AddPostScreenProps;
 }
 
