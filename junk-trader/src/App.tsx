@@ -1,41 +1,61 @@
-import { useSelector, shallowEqual, useDispatch } from "react-redux"
-import { addPost, removePost } from "./store/actionCreators"
 import { AddPostScreen } from "./components/AddPostScreen"
-import { PostsScreen } from "./components/PostsScreen"
-import { PostScreenProps } from "./components/PostsScreen"
-import * as redux from 'redux'
-import { Provider } from 'react-redux'
 import * as React from "react"
-import reducer from "./reducers/reducer"
 import "./App.css"
-import PostsList from "./components/PostsList"
-import { withStyles, Theme } from "@material-ui/core"
-import { Styles, StyledComponentProps, WithStyles } from "@material-ui/core/styles/withStyles"
 import { Component } from "react"
+import PostsList from "./components/PostsList"
+import { Store, createStore, applyMiddleware } from "redux"
+import reducer from "./reducers/reducer"
 import thunk from "redux-thunk"
+import { Provider, useSelector, shallowEqual, useDispatch } from "react-redux"
+import { State } from "./store/store"
+import { addPost } from "./store/actionCreators"
+import { makeStyles, MuiThemeProvider, Theme, createMuiTheme } from "@material-ui/core/styles"
 
-const styles: Styles<Theme, StyledComponentProps> = () => ({})
-
-const store: redux.Store<PostState, PostAction> & {
+const store: Store<PostState, PostAction> & {
   dispatch: DispatchType
-} = redux.createStore(reducer, redux.applyMiddleware(thunk))
+} = createStore(reducer, applyMiddleware(thunk))
 
-class App extends Component<AppProps> {
-  render(): JSX.Element {
-    const {
-      posts
-    } = this.props;
 
-    return (
-      <Provider store={store}>
-        <AddPostScreen posts={posts}/>
-        <PostsList/>
-      </Provider>
-    );
+function theme(): Theme {
+  return createMuiTheme({
+
+  })
+}
+
+const useStyles = makeStyles({
+  root: {
+    color: 'red',
+    '& p': {
+      color: 'green',
+      '& span': {
+        color: 'blue'
+      }
+    }
   }
+});
+
+export const App: React.FC = () => {
+
+      // const posts: Post[] = useSelector(
+      //   (state: State) => state.applicationState.posts,
+      //   shallowEqual
+      // )
+
+      const classes = useStyles();
+
+      const dispatch: React.Dispatch<any> = useDispatch()
+  
+      const savePost = React.useCallback(
+          (post: Post) => dispatch(addPost(post)),
+          [dispatch]
+      )
+      return (
+        <MuiThemeProvider theme={theme()}>
+            <AddPostScreen {...savePost} />
+            <PostsList/>
+        </MuiThemeProvider>
+    );
+  
 }
 
-export interface AppProps extends WithStyles<typeof styles> {
-  posts?: Post[];
-}
 export default App;
