@@ -2,7 +2,7 @@ import { AccordionActions, WithStyles, Theme } from '@material-ui/core'
 import actions from '../store/actions'
 import { connect } from 'react-redux'
 import { AnyAction, Dispatch } from 'redux'
-import AddPostScreen, { AddPostScreenProps } from './AddPostScreen'
+import { AddPostScreen, AddPostScreenProps } from './AddPostScreen'
 import { State } from '../store/store'
 import { Styles, StyledComponentProps } from '@material-ui/core/styles/withStyles'
 
