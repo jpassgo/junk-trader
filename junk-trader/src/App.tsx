@@ -51,7 +51,7 @@ export const App: React.FC = () => {
       )
       return (
         <MuiThemeProvider theme={theme()}>
-            <AddPostScreen {...savePost} />
+            <AddPostScreen addPost={savePost} />
             <PostsList/>
         </MuiThemeProvider>
     );

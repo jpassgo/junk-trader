@@ -4,30 +4,40 @@ import { Theme, WithStyles, withStyles } from '@material-ui/core'
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
-export const AddPostScreen: React.FC<AddPostScreenProps> = props =>  {
-    
-    const { addPost } = props;
+export const AddPostScreen: React.FC<AddPostScreenProps> = ({addPost}) =>  {
 
-    const handleClick = () => {
-        addPost({id: getRandomInt(1, 1000), title: "", price: 100.00, description: "" });
-    };
+    const [post, setPost] = React.useState<Post | {}>()
+
+    const handleAddingPost = (e: React.FormEvent<HTMLInputElement>) => {
+        setPost({
+            ...post,
+            [e.currentTarget.id]: e.currentTarget.value,
+        })
+    }
+
+    const addNewPost = (e: React.FormEvent) => {
+        e.preventDefault()
+        addPost(post)
+    }
 
     return (
-        <form onSubmit={ handleClick } className="form-inline">
-            <label>
-                Title:
-                <input type="text" name="title" />
-            </label>
-            <label>
-                Price:
-                <input type="text" name="price" />
-            </label>
-            <label>
-                Description:
-                <input type="text" name="description" />
-            </label>
-            <button type="submit" value="Submit" />
-        </form>
+        <React.Fragment>
+            <form onSubmit={ addNewPost } className="form-inline">
+                <label>
+                    Title:
+                    <input type="text" name="title" onChange={handleAddingPost}/>
+                </label>
+                <label>
+                    Price:
+                    <input type="number" name="price" onChange={handleAddingPost}/>
+                </label>
+                <label>
+                    Description:
+                    <input type="text" name="description" onChange={handleAddingPost}/>
+                </label>
+                <button type="submit" value="Submit" />
+            </form>
+        </React.Fragment>
     );
 }
 
