@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { ListItem, List, Grid } from '@material-ui/core';
 
-const PostsList = (props: PostsListProps) => {
+export const PostsList: React.FC<PostsListProps> = props => {
     const {
         posts
     } = props;
-    
+
     return( 
         <React.Fragment>
             {posts.map((post: Post, index: number) => (
@@ -28,8 +28,8 @@ const PostsList = (props: PostsListProps) => {
     );
 };
 
-interface PostsListProps {
-    posts: Post[];
+export interface PostsListProps {
+    posts: Post[]
 }
 
 const mapStateToProps = (state: PostState): PostsListProps => {

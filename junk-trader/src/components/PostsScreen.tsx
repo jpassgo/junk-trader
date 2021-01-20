@@ -29,7 +29,7 @@ export class PostsScreen extends Component<any>{
 }
 
 export interface PostScreenProps extends WithStyles<typeof styles> {
-    postings: Post[];
+    posts: Post[];
 }
 
 export default withStyles(styles, {withTheme: true})(PostsScreen)
