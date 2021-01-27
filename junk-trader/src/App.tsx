@@ -1,61 +1,34 @@
-import { AddPostScreen } from "./components/AddPostScreen"
-import * as React from "react"
-import "./App.css"
-import { Component } from "react"
-import PostsList from "./components/PostsList"
-import { Store, createStore, applyMiddleware } from "redux"
-import reducer from "./reducers/reducer"
-import thunk from "redux-thunk"
-import { Provider, useSelector, shallowEqual, useDispatch } from "react-redux"
-import { State } from "./store/store"
-import { addPost } from "./store/actionCreators"
-import { makeStyles, MuiThemeProvider, Theme, createMuiTheme } from "@material-ui/core/styles"
+import {
+  Theme,
+  WithStyles,
+  withStyles,
+  StyledComponentProps,
+  ThemeProvider as MuiThemeProvider,
+} from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { Styles } from '@material-ui/styles';
+import { getLightTheme } from './config/theme/light-theme';
 
-const store: Store<PostState, PostAction> & {
-  dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk))
+const styles: Styles<Theme, StyledComponentProps> = () => ({});
 
+class App extends Component<AppProps> {
+  render(): JSX.Element {
+    const { classes } = this.props;
 
-function theme(): Theme {
-  return createMuiTheme({
-
-  })
-}
-
-const useStyles = makeStyles({
-  root: {
-    color: 'red',
-    '& p': {
-      color: 'green',
-      '& span': {
-        color: 'blue'
-      }
-    }
-  }
-});
-
-export const App: React.FC = () => {
-
-      // const posts: Post[] = useSelector(
-      //   (state: State) => state.applicationState.posts,
-      //   shallowEqual
-      // )
-
-      const classes = useStyles();
-
-      const dispatch: React.Dispatch<any> = useDispatch()
-  
-      const savePost = React.useCallback(
-          (post: Post) => dispatch(addPost(post)),
-          [dispatch]
-      )
-      return (
-        <MuiThemeProvider theme={theme()}>
-            <AddPostScreen addPost={savePost} />
-            <PostsList/>
-        </MuiThemeProvider>
+    return (
+      <MuiThemeProvider theme={getLightTheme()}>
+        <div>
+          {/*// todo:  this is the "entry point" for the app. any "top" level */}
+          {/*// todo:  component setup in the index file gets rendered here*/}
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     );
-  
+  }
 }
 
-export default App;
+export interface AppProps extends WithStyles<typeof styles> {
+  children: JSX.Element;
+}
+
+export default withStyles(styles, { withTheme: true })(App);
