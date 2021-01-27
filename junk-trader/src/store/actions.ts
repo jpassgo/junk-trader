@@ -1,4 +1,5 @@
 export default {
+    INITIALIZE: 'INITIALIZE',
     ADD_POST: "ADD_POST",
     REMOVE_POST: "REMOVE_POST"
 }

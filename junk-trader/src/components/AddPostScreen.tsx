@@ -48,7 +48,7 @@ function getRandomInt(min: number, max: number) {
 }
 
 export interface AddPostScreenProps extends WithStyles<typeof styles> {
-    addPost: (post: Post) => void;
+    addPost: (post: Post | {} | undefined) => void;
 }
 
 export default withStyles(styles, { withTheme: true })(AddPostScreen);
