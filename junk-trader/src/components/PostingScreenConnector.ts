@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import PostingScreen, {
     PostScreenProps
-} from './PostsScreen'
+} from './top-level-components/PostsScreen'
 import { State } from '../store/store';
 
 const mapStateToProps = (state: State): PostScreenProps => {
@@ -13,6 +13,5 @@ const mapStateToProps = (state: State): PostScreenProps => {
 const mapDispatchToProps = (): PostScreenProps => {
     return (({} as unknown) as PostScreenProps);
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostingScreen);
