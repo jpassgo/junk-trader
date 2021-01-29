@@ -61,13 +61,13 @@ const mapStateToProps = (state: State): SomeCardProps => {
   return ({
     testValue: state.applicationState.testValue,
     username: state.applicationState.username,
-  } as unknown) as SomeCardProps;
-};
+  });
+}
 
-const mapDispatchToProps = (
-  dispatch: Dispatch
-): SomeCardProps =>
-  (({} as unknown) as SomeCardProps);
+const mapDispatchToProps = (dispatch: Dispatch): SomeCardProps => {
+  return (({} as unknown) as SomeCardProps);
+}
+
 
 export default connect(
   mapStateToProps,

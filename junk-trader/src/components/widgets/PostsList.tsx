@@ -50,8 +50,8 @@ const mapStateToProps = (state: PostState): PostsListProps => {
     } as unknown) as PostsListProps;
 };
 
-const mapDispatchToProps = (
-    dispatch: Dispatch
-): PostsListProps => ({} as unknown) as PostsListProps);
+const mapDispatchToProps = (dispatch: Dispatch): PostsListProps => {
+    return (({} as unknown) as PostsListProps);
+  }
     
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
