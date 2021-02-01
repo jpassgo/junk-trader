@@ -25,7 +25,21 @@ export const createStore = (history: History): Store => {
   return createStoreFunc(allReducers, {
     applicationState: ({
       // todo:  this is where we can default values for the app on load
-      testValue: 'DEFAULTING_FOR_TEST'
+      testValue: 'DEFAULTING_FOR_TEST',
+      posts: [
+        {
+            id: 1,
+            title: "PS5",
+            price: 1200.0,
+            description: "Over priced second hand PS5."
+        },
+        {
+            id: 2,
+            title: "Xbox Series X",
+            price: 500.0,
+            description: "Not even upcharging, please take it off my hands."
+        }
+    ]
     } as unknown) as ApplicationState,
   });
 };
