@@ -23,4 +23,5 @@ export default {
 export interface ApplicationState {
   username: string;
   testValue: string;
+  posts: Post[]
 }
