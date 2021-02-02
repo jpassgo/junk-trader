@@ -28,8 +28,8 @@ const PostsList = (props: PostsListProps): JSX.Element => {
 
                 <Card>
                     <CardHeader
-                        title={'Card Header'}
-                        subheader={'with some subheader'}
+                        title={`${post.title}`}
+                        subheader={`$${post.price}`}
                         avatar={
                             <Avatar className={classes.avatar}>
                                 <SportsEsportsIcon />
@@ -40,15 +40,13 @@ const PostsList = (props: PostsListProps): JSX.Element => {
                         className={classes.media}
                         title={'Some Card content title for on hover'}
                     />
-                    <CardContent>
+                    <CardContent>  
                         <Typography>
-                            {`Title ${post.title}`}
-                        </Typography>
+                            {`Description:`}  
+                        </Typography>                                                 
                         <Typography>
-                            {`Price ${post.price}`}
-                        </Typography>
-                        <Typography>
-                            {`Description ${post.description}`}
+                            
+                            {`${post.description}`}
                         </Typography>
                     </CardContent>
                 </Card>            
