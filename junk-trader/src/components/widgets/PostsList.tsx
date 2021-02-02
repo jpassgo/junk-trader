@@ -38,6 +38,7 @@ const PostsList = (props: PostsListProps): JSX.Element => {
                     />
                     <CardMedia
                         className={classes.media}
+                        image={"../images/ps5.jpeg"}
                         title={'Some Card content title for on hover'}
                     />
                     <CardContent>  
