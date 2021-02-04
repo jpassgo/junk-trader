@@ -8,6 +8,7 @@ import { Route } from 'react-router';
 import { createStore } from './config/redux/store';
 import routes from './config/constants/routes';
 import HomeScreen from './components/top-level-components/HomeScreen';
+import AddPostScreen from './components/top-level-components/AddPostScreen';
 import { init } from './creators/init';
 
 const history = createHashHistory(),
@@ -29,7 +30,13 @@ ReactDOM.render(
               path={routes.HOME_SCREEN}
             />
           </div>
-
+          <div className={'route'}>
+            <Route
+              component={AddPostScreen}
+              exact
+              path={routes.ADD_POST_SCREEN}
+            />
+          </div>
         </App>
       </ConnectedRouter>
     </Provider>,
