@@ -1,27 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 import { Theme, WithStyles, withStyles } from '@material-ui/core'
+import { addPost } from '../../store/actionCreators';
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
-export const AddPostScreen: React.FC<AddPostScreenProps> = ({addPost}) =>  {
+class AddPostScreen extends Component<AddPostScreenProps> {
+    render(): JSX.Element {
+        const handleAddingPost = (e: React.FormEvent<HTMLInputElement>) => {
+            setPost({
+                ...post,
+                [e.currentTarget.id]: e.currentTarget.value,
+            })
+        }
 
-    const [post, setPost] = React.useState<Post | {}>()
+        const addNewPost = (e: React.FormEvent) => {
+            e.preventDefault()
+        }
 
-    const handleAddingPost = (e: React.FormEvent<HTMLInputElement>) => {
-        setPost({
-            ...post,
-            [e.currentTarget.id]: e.currentTarget.value,
-        })
-    }
-
-    const addNewPost = (e: React.FormEvent) => {
-        e.preventDefault()
-        addPost(post)
-    }
-
-    return (
-        <React.Fragment>
+        return (
             <form onSubmit={ addNewPost } className="form-inline">
                 <label>
                     Title:
@@ -37,8 +34,9 @@ export const AddPostScreen: React.FC<AddPostScreenProps> = ({addPost}) =>  {
                 </label>
                 <button type="submit" value="Submit" />
             </form>
-        </React.Fragment>
-    );
+
+        );
+    }
 }
 
 function getRandomInt(min: number, max: number) {
