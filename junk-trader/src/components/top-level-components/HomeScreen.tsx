@@ -7,7 +7,6 @@ import {
   withStyles,
 } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import SomeCard from '../widgets/SomeCard';
 import PostsList from '../widgets/PostsList';
 
 const styles: Styles<Theme, StyledComponentProps> = () => ({});
