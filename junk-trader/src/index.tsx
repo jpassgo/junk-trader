@@ -29,8 +29,6 @@ ReactDOM.render(
               exact
               path={routes.HOME_SCREEN}
             />
-          </div>
-          <div className={'route'}>
             <Route
               component={AddPostScreen}
               exact
