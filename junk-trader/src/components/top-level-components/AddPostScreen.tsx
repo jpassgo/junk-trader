@@ -1,8 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 import { Theme, WithStyles, withStyles, Grid, CssBaseline, Paper, Typography, TextField, FormControlLabel, Checkbox, Button, Link, Box, makeStyles, createStyles } from '@material-ui/core'
 import { addPost } from '../../store/actionCreators';
-import classes from '*.module.css';
+import { useDispatch } from 'react-redux';
+import { privateEncrypt } from 'crypto';
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
@@ -19,110 +20,102 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-class AddPostScreen extends Component<AddPostScreenProps> {
-    render(): JSX.Element {
-        const classes = useStyles();
-        const [inputs, setInputs] = useState({
-            title: '',
-            price: '',
-            description: ''
-        });
+const AddPostScreen = (
+    props: AddPostScreenProps
+  ): JSX.Element => {
+    // const classes = useStyles();
+    // const [inputs, setInputs] = useState({
+    //     title: '',
+    //     price: '',
+    //     description: ''
+    // });
 
-        function handleChange(e) {
-            e.preventDefault();
-            const { name, value } = e.target;
-            setInputs({ ...inputs, [name]: value });
-            console.log(`${inputs}`)
-        }
+    // function handleChange(e) {
+    //     e.preventDefault();
+    //     const { name, value } = e.target;
+    //     setInputs({ ...inputs, [name]: value });
+    //     console.log(`${inputs}`)
+    // }
 
-        const addPost = () => {
-            addPost({ inputs });
-            console.log(`post; ${post}`)
-        };
+    // const addPost = () => {
+    //     addPost({ inputs });
+    //     console.log(`post; ${post}`)
+    // };
 
-        return (
-            <Grid container component='main' className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <Typography component='h1' variant='h5'>
-                    Add Post
-                </Typography>
-                <form className={classes.form} noValidate>
-                    <TextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    id='title'
-                    label='Title'
-                    value={inputs.title}
-                    onChange={e => handleChange(e)}
-                    name='title'
-                    autoComplete='title'
-                    autoFocus
-                    />
-                    <TextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    name='price'
-                    label='Price'
-                    value={inputs.price}
-                    onChange={e => handleChange(e)}
-                    type='number'
-                    id='price'
-                    autoComplete='$0.00'
-                    />
-                    <FormControlLabel
-                    control={<Checkbox value='remember' color='primary' />}
-                    label='Remember me'
-                    />
-                    <TextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    name='description'
-                    label='Description'
-                    value={inputs.description}
-                    onChange={e => handleChange(e)}
-                    type='text'
-                    id='description'
-                    autoComplete='Place a description of the item here.'
-                    />
-                    <FormControlLabel
-                    control={<Checkbox value='remember' color='primary' />}
-                    label='Remember me'
-                    />
-                    <Button
-                    type='submit'
-                    fullWidth
-                    variant='contained'
-                    color='primary'
-                    value='Add Post'
-                    className={classes.submit}
-                    onClick={() => addPost()}
-                    >
-                    Sign In 🙂
-                    </Button>
-                    <Grid container>                
-                    <Grid item>
-                        <Link
-                        variant='body2'
-                        onClick={() => history.push('/search')}
-                        >
-                        {""}
-                        </Link>
-                    </Grid>
-                    </Grid>            
-                </form>
-                </div>
-            </Grid>
-            </Grid>
-        );
-    }
+
+    const dispatch = useDispatch();
+
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
+
+    useEffect(() => {
+        console.log(`Title: ${title}, Price: ${price}, Description: ${description}`);
+
+        dispatch(addPost({ id: getRandomInt(1, 100), title: title, price: price, description: description }));
+        
+    }, [title, price, description]);
+
+    return (
+       
+    <form noValidate style={{ display: "flex", flexDirection: "column" }}>
+        <TextField
+        variant='outlined'
+        margin='normal'
+        required
+        fullWidth
+        id='title'
+        label='Title'
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        name='title'
+        autoComplete='title'
+        autoFocus
+        />
+        <TextField
+        variant='outlined'
+        margin='normal'
+        required
+        fullWidth
+        name='price'
+        label='Price'
+        value={price}
+        onChange={e => setPrice(e.target.value)}                
+        id='price'
+        autoComplete='$0.00'
+        />
+        <FormControlLabel
+        control={<Checkbox value='remember' color='primary' />}
+        label='Remember me'
+        />
+        <TextField
+        variant='outlined'
+        margin='normal'
+        required
+        fullWidth
+        name='description'
+        label='Description'
+        value={description}
+        onChange={e => setDescription(e.target.value)}                
+        id='description'
+        autoComplete='Place a description of the item here.'
+        />
+        <FormControlLabel
+        control={<Checkbox value='remember' color='primary' />}
+        label='Remember me'
+        />
+        <Button
+        type='submit'
+        fullWidth
+        variant='contained'
+        color='primary'
+        value='Add Post'                  
+        onClick={() => {}}
+        >
+        Sign In 🙂
+        </Button>                  
+    </form>                                         
+    );
 }
 
 function getRandomInt(min: number, max: number) {
