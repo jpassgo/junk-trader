@@ -45,12 +45,8 @@ class AddPostScreen extends Component<AddPostScreenProps> {
             <CssBaseline />
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                <div>
-                    <img src={Logo} style={{ width: 300 }} />
-                </div>
                 <Typography component='h1' variant='h5'>
-                    Sign in
+                    Add Post
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
@@ -60,7 +56,7 @@ class AddPostScreen extends Component<AddPostScreenProps> {
                     fullWidth
                     id='title'
                     label='Title'
-                    value={inputs.login}
+                    value={inputs.title}
                     onChange={e => handleChange(e)}
                     name='title'
                     autoComplete='title'
@@ -73,11 +69,28 @@ class AddPostScreen extends Component<AddPostScreenProps> {
                     fullWidth
                     name='price'
                     label='Price'
-                    value={inputs.password}
+                    value={inputs.price}
                     onChange={e => handleChange(e)}
                     type='number'
                     id='price'
                     autoComplete='$0.00'
+                    />
+                    <FormControlLabel
+                    control={<Checkbox value='remember' color='primary' />}
+                    label='Remember me'
+                    />
+                    <TextField
+                    variant='outlined'
+                    margin='normal'
+                    required
+                    fullWidth
+                    name='description'
+                    label='Description'
+                    value={inputs.description}
+                    onChange={e => handleChange(e)}
+                    type='text'
+                    id='description'
+                    autoComplete='Place a description of the item here.'
                     />
                     <FormControlLabel
                     control={<Checkbox value='remember' color='primary' />}
@@ -90,7 +103,7 @@ class AddPostScreen extends Component<AddPostScreenProps> {
                     color='primary'
                     value='Add Post'
                     className={classes.submit}
-                    onClick={() => loginUser()}
+                    onClick={() => addPost()}
                     >
                     Sign In 🙂
                     </Button>
@@ -98,7 +111,7 @@ class AddPostScreen extends Component<AddPostScreenProps> {
                     <Grid item>
                         <Link
                         variant='body2'
-                        onClick={() => history.push('/registration')}
+                        onClick={() => history.push('/search')}
                         >
                         {""}
                         </Link>
