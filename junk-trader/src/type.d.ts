@@ -1,7 +1,7 @@
 interface Post {
     id: number,
     title: string,
-    price: number,
+    price: string,
     description: string
 }
 
