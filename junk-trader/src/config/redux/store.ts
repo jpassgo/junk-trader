@@ -30,13 +30,13 @@ export const createStore = (history: History): Store => {
         {
             id: 1,
             title: "PS5",
-            price: 1200.0,
+            price: "1200.0",
             description: "Over priced second hand PS5."
         },
         {
             id: 2,
             title: "Xbox Series X",
-            price: 500.0,
+            price: "500.0",
             description: "Not even upcharging, please take it off my hands."
         }
     ]
