@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import PostsList from '../widgets/PostsList';
+import MenuLinks from '../widgets/MenuLinks';
 
 const styles: Styles<Theme, StyledComponentProps> = () => ({});
 
@@ -16,12 +17,13 @@ class HomeScreen extends Component<HomeScreenProps> {
     const { classes } = this.props;
 
     return (
-      <Grid container alignItems={'center'} justify={'center'}>
+      <Grid container alignItems={'flex-start'} justify={'flex-start'}>
         {/* <Grid item xs={4}>
           <SomeCard />
         </Grid> */}
         <Grid item xs={4}>        
-          <PostsList />
+          <MenuLinks></MenuLinks>
+          <PostsList />          
         </Grid>
       </Grid>
     );
