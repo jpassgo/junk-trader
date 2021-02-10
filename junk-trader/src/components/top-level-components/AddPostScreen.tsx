@@ -23,25 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const AddPostScreen = (
     props: AddPostScreenProps
   ): JSX.Element => {
-    // const classes = useStyles();
-    // const [inputs, setInputs] = useState({
-    //     title: '',
-    //     price: '',
-    //     description: ''
-    // });
-
-    // function handleChange(e) {
-    //     e.preventDefault();
-    //     const { name, value } = e.target;
-    //     setInputs({ ...inputs, [name]: value });
-    //     console.log(`${inputs}`)
-    // }
-
-    // const addPost = () => {
-    //     addPost({ inputs });
-    //     console.log(`post; ${post}`)
-    // };
-
 
     const dispatch = useDispatch();
 
