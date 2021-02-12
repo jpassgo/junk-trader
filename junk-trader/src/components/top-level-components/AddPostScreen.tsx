@@ -84,7 +84,7 @@ const AddPostScreen = (
           value='Add Post'                  
           onClick={() => {}}
           >
-          Sign In 🙂
+          Add Post
           </Button>                  
       </form>                                         
     );
