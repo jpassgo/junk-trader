@@ -37,65 +37,56 @@ const AddPostScreen = (
         
     }, [title, price, description]);
 
-    return (
-       
-    <form noValidate style={{ display: "flex", flexDirection: "column" }}>
-        <TextField
-        variant='outlined'
-        margin='normal'
-        required
-        fullWidth
-        id='title'
-        label='Title'
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-        name='title'
-        autoComplete='title'
-        autoFocus
-        />
-        <TextField
-        variant='outlined'
-        margin='normal'
-        required
-        fullWidth
-        name='price'
-        label='Price'
-        value={price}
-        onChange={e => setPrice(e.target.value)}                
-        id='price'
-        autoComplete='$0.00'
-        />
-        <FormControlLabel
-        control={<Checkbox value='remember' color='primary' />}
-        label='Remember me'
-        />
-        <TextField
-        variant='outlined'
-        margin='normal'
-        required
-        fullWidth
-        name='description'
-        label='Description'
-        value={description}
-        onChange={e => setDescription(e.target.value)}                
-        id='description'
-        autoComplete='Place a description of the item here.'
-        />
-        <FormControlLabel
-        control={<Checkbox value='remember' color='primary' />}
-        label='Remember me'
-        />
-        <Button
-        type='submit'
-        fullWidth
-        variant='contained'
-        color='primary'
-        value='Add Post'                  
-        onClick={() => {}}
-        >
-        Sign In 🙂
-        </Button>                  
-    </form>                                         
+    return (    
+      <form noValidate style={{ display: "flex", flexDirection: "column" }}>
+          <TextField
+          variant='outlined'
+          margin='normal'
+          required
+          fullWidth
+          id='title'
+          label='Title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          name='title'
+          autoComplete='title'
+          autoFocus
+          />
+          <TextField
+          variant='outlined'
+          margin='normal'
+          required
+          fullWidth
+          name='price'
+          label='Price'
+          value={price}
+          onChange={e => setPrice(e.target.value)}                
+          id='price'
+          autoComplete='$0.00'
+          />
+          <TextField
+          variant='outlined'
+          margin='normal'
+          required
+          fullWidth
+          name='description'
+          label='Description'
+          value={description}
+          onChange={e => setDescription(e.target.value)}                
+          id='description'
+          autoComplete='Place a description of the item here.'
+          />
+          <Button
+          type='submit'
+          fullWidth
+          variant='contained'
+          color='primary'
+          value='Add Post'                  
+          onClick={() => {}}
+          >
+          Sign In 🙂
+          </Button>                  
+      </form>                                         
     );
 }
 
