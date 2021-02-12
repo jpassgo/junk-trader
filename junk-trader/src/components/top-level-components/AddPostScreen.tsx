@@ -1,9 +1,8 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 import { Theme, WithStyles, withStyles, Grid, CssBaseline, Paper, Typography, TextField, FormControlLabel, Checkbox, Button, Link, Box, makeStyles, createStyles } from '@material-ui/core'
 import { addPost } from '../../store/actionCreators';
 import { useDispatch } from 'react-redux';
-import { privateEncrypt } from 'crypto';
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
 
