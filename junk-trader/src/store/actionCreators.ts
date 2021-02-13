@@ -5,8 +5,6 @@ export function addPost(post: Post) {
         type: actions.ADD_POST,
         post,
     }
-
-    return simulateHttpRequest(action)
 }
 
 export function removePost(post: Post) {
@@ -14,8 +12,6 @@ export function removePost(post: Post) {
         type: actions.REMOVE_POST,
         post,
     }
-
-    return simulateHttpRequest(action)
 }
 
 export function simulateHttpRequest(post: PostAction) {
