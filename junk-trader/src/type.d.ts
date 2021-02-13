@@ -5,10 +5,6 @@ interface Post {
     description: string
 }
 
-type PostState = {
-    posts: Post[]
-}
-
 type PostAction = {
     type: string,
     post: Post
