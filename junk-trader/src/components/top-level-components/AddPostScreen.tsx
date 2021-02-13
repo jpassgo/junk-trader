@@ -19,7 +19,7 @@ const AddPostScreen = (
     useEffect(() => {
         console.log(`Title: ${title}, Price: ${price}, Description: ${description}`);
 
-        dispatch(addPost({ id: getRandomInt(1, 100), title: title, price: price, description: description }));
+        // dispatch(addPost({ id: getRandomInt(1, 100), title: title, price: price, description: description }));
         
     }, [title, price, description]);
 
