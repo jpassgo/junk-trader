@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Styles, StyledComponentProps } from '@material-ui/styles';
 import { Theme, WithStyles, withStyles, TextField, Button, makeStyles, createStyles } from '@material-ui/core'
-import { addPost } from '../../store/actionCreators';
 import { useDispatch } from 'react-redux';
+import { addPost } from '../../store/actionCreators';
 
 const styles: Styles<Theme, StyledComponentProps> = (theme) => ({});  
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    avatar: {
-      // todo:  using the "theme" for colors
-      background: theme.palette.primary.main,
-    },
-    media: {
-      minHeight: '20vh',
-      background: theme.palette.secondary.main,
-    },
-  })
-);
 
 const AddPostScreen = (
     props: AddPostScreenProps
@@ -35,6 +22,7 @@ const AddPostScreen = (
         dispatch(addPost({ id: getRandomInt(1, 100), title: title, price: price, description: description }));
         
     }, [title, price, description]);
+
 
     return (    
       <form noValidate style={{ display: "flex", flexDirection: "column" }}>
