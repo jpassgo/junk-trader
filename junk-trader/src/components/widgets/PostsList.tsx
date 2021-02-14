@@ -26,7 +26,7 @@ const PostsList = (props: PostsListProps): JSX.Element => {
         <React.Fragment>
             {props.posts.map((post: Post, index: number) => (
 
-                <Card>
+                <Card key={index}>
                     <CardHeader
                         title={`${post.title}`}
                         subheader={`$${post.price}`}
