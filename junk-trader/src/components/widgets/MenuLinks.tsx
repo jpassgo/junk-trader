@@ -1,7 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import { NavLink } from 'react-router-dom'
+
 
 function handleClick(event: { preventDefault: () => void; }) {
   event.preventDefault();
@@ -11,13 +12,12 @@ function handleClick(event: { preventDefault: () => void; }) {
 export default function SimpleBreadcrumbs() {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" href="/#" onClick={handleClick}>
+      <NavLink color="inherit" to="/" onClick={handleClick}>
         Home
-      </Link>
-      <Link color="inherit" href="/#/posts" onClick={handleClick}>
+      </NavLink>
+      <NavLink color="inherit" to="/posts" onClick={handleClick}>
         Add Post
-      </Link>
-      <Typography color="textPrimary">Breadcrumb</Typography>
+      </NavLink>
     </Breadcrumbs>
   );
 }
