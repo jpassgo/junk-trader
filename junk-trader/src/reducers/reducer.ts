@@ -1,42 +1,31 @@
 import actions from '../store/actions'
 
-const initialState: PostState = {
-    posts: [
-        {
-            id: 1,
-            title: "PS5",
-            price: "1200.0",
-            description: "Over priced second hand PS5."
-        },
-        {
-            id: 2,
-            title: "Xbox Series X",
-            price: "500.0",
-            description: "Not even upcharging, please take it off my hands."
-        }
-    ]
-}
-
-const reducer = (
-        state: PostState = initialState,
+export default { 
+    reducer(
+        state: PostState = ({} as unknown) as PostState,
         action: PostAction
-    ): PostState => {
-    switch(action.type) {
-        case actions.ADD_POST:
-            return {
-                ...state,
-                posts: state.posts.concat(action.post)
-            }
-        case actions.REMOVE_POST:
-            const updatedPosts: Post[] = state.posts.filter(
-                post => post.id !== action.post.id
-            )
-            return {
-                ...state,
-                posts: updatedPosts
-            }
+    ): PostState {
+        let newState = Object.assign({}, state);
+        switch(action.type) {
+            case actions.ADD_POST:
+                return {
+                    ...newState,
+                    posts: newState.posts.concat(action.post)
+                }
+            case actions.REMOVE_POST:
+                const updatedPosts: Post[] = newState.posts.filter(
+                    post => post.id !== action.post.id
+                )
+                return {
+                    ...newState,
+                    posts: updatedPosts
+                }
+        }
+        
+        return newState
     }
-    return state
+};
+  
+export interface PostState {
+    posts: Post[]
 }
-
-export default reducer

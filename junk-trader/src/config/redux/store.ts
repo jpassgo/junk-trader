@@ -9,6 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 import { routerReducer } from 'react-router-redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import application, { ApplicationState } from '../../reducers/application';
+import reducer from '../../reducers/reducer';
 
 export const createStore = (history: History): Store => {
   const createStoreFunc = applyMiddleware(
@@ -19,6 +20,7 @@ export const createStore = (history: History): Store => {
       router: connectRouter(history),
       routing: routerReducer,
       applicationState: application.reducer,
+      postState: reducer.reducer
       // todo:  able to add more reducers here
     });
 
